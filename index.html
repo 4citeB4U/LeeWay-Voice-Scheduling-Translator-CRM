@@ -1,4 +1,16 @@
 <!DOCTYPE html>
+<!--
+  REGION: LEEWAY_CRM_FIELD_OUTREACH
+  TAG: LEEWAY-CRM-FIELD-001
+  WHAT: Field outreach and CRM interaction frontend
+  WHY: Governed integration into the canonical LeeWay ERP & CRM
+  WHO: LeeWay Industries / authorized maintainers
+  WHERE: LeeWay-Voice-Scheduling-Translator-CRM/index.html
+  WHEN: 2026-11-02 (integration branch)
+  HOW: Local-first UI; no simulated Runtime/Veritas/voice integration claims
+  LICENSE: Apache-2.0 (repository license must be independently verified)
+  STATE: Development; browser data are not authoritative LeeWay records
+-->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -371,7 +383,7 @@ a{color:var(--blue);font-weight:700;text-decoration:none}footer{padding:18px;tex
   <div class="grid">
     <div class="card span-12 translate-card">
       <h2>Field Translator / Conversation Helper</h2>
-      <p class="muted">Use this when someone does not speak English or prefers another language. This version gives you translated field phrases, opens Google Translate for full translation, and lets you save the conversation note back to the CRM.</p>
+      <p class="muted">Use this when someone does not speak English or prefers another language. This field assistant displays verified built-in phrases only. General translation requires a separately verified LeeWay translator capability; no third-party translation service is invoked.</p>
       <div class="warning">
         <strong>Field rule:</strong> Keep it simple. Start with respect, ask their preferred language, explain that you help businesses with communication and follow-up, then offer to send information in writing.
       </div>
@@ -399,7 +411,7 @@ a{color:var(--blue);font-weight:700;text-decoration:none}footer{padding:18px;tex
       <textarea id="translatorInput">Hi, my name is Leonard Lee. I help local businesses use AI for appointment reminders, customer follow-up, reviews, social media, emails, and office workflow. Who is the best person to speak with?</textarea>
 
       <div class="row">
-        <button class="btn primary" onclick="openGoogleTranslate()">Open in Google Translate</button>
+        <button class="btn primary" onclick="showPhraseTranslation()">Show Verified Phrase</button>
         <button class="btn" onclick="showPhraseTranslation()">Show Quick Translation</button>
       </div>
 
@@ -411,7 +423,7 @@ a{color:var(--blue);font-weight:700;text-decoration:none}footer{padding:18px;tex
     <div class="card span-7">
       <h2>Large Display</h2>
       <p class="muted">Show this screen to the person if needed.</p>
-      <div id="translationOutput" class="big-translation">Select a quick phrase or open Google Translate.</div>
+      <div id="translationOutput" class="big-translation">Select a verified phrase. Other translations are unavailable until LeeWay translator integration is verified.</div>
       <div style="margin-top:10px">
         <button class="btn" onclick="speakTranslation()">Speak Displayed Text</button>
         <button class="btn" onclick="copyTranslation()">Copy Displayed Text</button>
@@ -420,13 +432,13 @@ a{color:var(--blue);font-weight:700;text-decoration:none}footer{padding:18px;tex
 
     <div class="card span-6">
       <h2>Quick Phrase Library</h2>
-      <p class="muted">Tap a phrase to show it large. Spanish includes direct translations. Other languages open best through Google Translate.</p>
+      <p class="muted">Tap a phrase to show it large. Spanish includes direct translations. Other languages require a verified LeeWay translator capability.</p>
       <div id="phraseLibrary"></div>
     </div>
 
     <div class="card span-6">
       <h2>Voice Capture in Another Language</h2>
-      <p class="muted">Browser support varies by language. This captures what they say as text. Use Google Translate for full translation.</p>
+      <p class="muted">Browser support varies by language. This captures what they say as text. Full translation requires a verified LeeWay translator capability.</p>
       <label>Speech Recognition Language</label>
       <select id="speechLang">
         <option value="es-US">Spanish</option>
@@ -444,7 +456,7 @@ a{color:var(--blue);font-weight:700;text-decoration:none}footer{padding:18px;tex
       <label>Captured Speech</label>
       <div id="foreignTranscript" class="transcript-box" contenteditable="true"></div>
       <div class="row" style="margin-top:10px">
-        <button class="btn" onclick="openCapturedInTranslate()">Translate Captured Speech</button>
+        <button class="btn" onclick="showCapturedTranslationStatus()">Check Translation Availability</button>
         <button class="btn" onclick="appendForeignToNotes()">Add to Notes</button>
       </div>
     </div>
@@ -709,16 +721,16 @@ function renderPhraseLibrary(){
   const lang=$("translatorLang").value;
   const label=getLangLabel();
   $("phraseLibrary").innerHTML=phraseLibrary.map(p=>{
-    const shown=lang==="es"?p.es:p.en;
-    const note=lang==="es"?"Spanish translation":"Open Google Translate for "+label;
-    return `<div class="phrase-card"><strong>${p.en}</strong><p>${shown}</p><span class="lang-pill">${note}</span><br><button class="btn" onclick="usePhrase('${p.key}')">Use Phrase</button><button class="btn" onclick="translatePhrase('${p.key}')">Open Translate</button></div>`;
+    const shown=lang==="es"?p.es:"Translation unavailable: no verified LeeWay translation is connected.";
+    const note=lang==="es"?"Verified built-in Spanish phrase":"Translation unavailable for "+label;
+    return `<div class="phrase-card"><strong>${p.en}</strong><p>${shown}</p><span class="lang-pill">${note}</span><br><button class="btn" onclick="usePhrase('${p.key}')">Use Phrase</button><button class="btn" onclick="translatePhrase('${p.key}')">Check Phrase</button></div>`;
   }).join("");
 }
 function usePhrase(key){
   const lang=$("translatorLang").value;
   const p=phraseLibrary.find(x=>x.key===key);
   if(!p)return;
-  const shown=lang==="es"?p.es:p.en;
+  const shown=lang==="es"?p.es:"Translation unavailable: no verified LeeWay translation is connected.";
   $("translationOutput").textContent=shown;
   $("translatorInput").value=p.en;
 }
@@ -726,20 +738,24 @@ function translatePhrase(key){
   const p=phraseLibrary.find(x=>x.key===key);
   if(!p)return;
   $("translatorInput").value=p.en;
-  openGoogleTranslate();
+  showPhraseTranslation();
 }
 function showPhraseTranslation(){
   const txt=$("translatorInput").value.trim();
   const exact=phraseLibrary.find(p=>p.en.trim().toLowerCase()===txt.toLowerCase());
   if(exact && $("translatorLang").value==="es") $("translationOutput").textContent=exact.es;
-  else $("translationOutput").textContent=txt + "\n\nUse 'Open in Google Translate' for live translation into " + getLangLabel() + ".";
+  else $("translationOutput").textContent="Translation unavailable: no verified LeeWay translation provider is connected for " + getLangLabel() + ". Original text has not been translated.";
 }
-function openGoogleTranslate(){
-  const text=encodeURIComponent($("translatorInput").value.trim());
-  const target=$("translatorLang").value;
-  if(!text){alert("Enter a message first.");return}
-  window.open(`https://translate.google.com/?sl=en&tl=${target}&text=${text}&op=translate`,"_blank");
+function showAvailableTranslation(){
+  // Compatibility entrypoint: no external or unverified translation provider.
+  showPhraseTranslation();
 }
+function showCapturedTranslationStatus(){
+  const captured = document.getElementById("foreignTranscript")?.textContent?.trim() || "";
+  if (!captured) { alert("Capture or enter text first."); return; }
+  alert("No verified LeeWay translation provider is connected. Captured text remains in this browser; translation was not performed.");
+}
+
 function speakTranslation(){
   const text=$("translationOutput").textContent.trim();
   if(!text){return}
@@ -824,9 +840,8 @@ function toggleForeignVoice(){
   }
 }
 function openCapturedInTranslate(){
-  const text=encodeURIComponent($("foreignTranscript").textContent.replace(/\n\nListening:.*/g,"").trim());
-  if(!text){alert("Capture or type speech first.");return}
-  window.open(`https://translate.google.com/?sl=auto&tl=en&text=${text}&op=translate`,"_blank");
+  // Retained compatibility entrypoint; never export field speech to a third party.
+  showCapturedTranslationStatus();
 }
 function appendForeignToNotes(){
   const text=$("foreignTranscript").textContent.replace(/\n\nListening:.*/g,"").trim();
