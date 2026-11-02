@@ -723,7 +723,7 @@ function renderPhraseLibrary(){
   $("phraseLibrary").innerHTML=phraseLibrary.map(p=>{
     const shown=lang==="es"?p.es:"Translation unavailable: no verified LeeWay translation is connected.";
     const note=lang==="es"?"Verified built-in Spanish phrase":"Translation unavailable for "+label;
-    return `<div class="phrase-card"><strong>${p.en}</strong><p>${shown}</p><span class="lang-pill">${note}</span><br><button class="btn" onclick="usePhrase('${p.key}')">Use Phrase</button><button class="btn" onclick="translatePhrase('${p.key}')">Open Translate</button></div>`;
+    return `<div class="phrase-card"><strong>${p.en}</strong><p>${shown}</p><span class="lang-pill">${note}</span><br><button class="btn" onclick="usePhrase('${p.key}')">Use Phrase</button><button class="btn" onclick="translatePhrase('${p.key}')">Check Phrase</button></div>`;
   }).join("");
 }
 function usePhrase(key){
@@ -746,8 +746,8 @@ function showPhraseTranslation(){
   if(exact && $("translatorLang").value==="es") $("translationOutput").textContent=exact.es;
   else $("translationOutput").textContent="Translation unavailable: no verified LeeWay translation provider is connected for " + getLangLabel() + ". Original text has not been translated.";
 }
-function openGoogleTranslate(){
-  // Compatibility entrypoint: intentionally does not call Google or an unverified translation provider.
+function showAvailableTranslation(){
+  // Compatibility entrypoint: no external or unverified translation provider.
   showPhraseTranslation();
 }
 function showCapturedTranslationStatus(){
@@ -840,9 +840,8 @@ function toggleForeignVoice(){
   }
 }
 function openCapturedInTranslate(){
-  const text=encodeURIComponent($("foreignTranscript").textContent.replace(/\n\nListening:.*/g,"").trim());
-  if(!text){alert("Capture or type speech first.");return}
-  window.open(`https://translate.google.com/?sl=auto&tl=en&text=${text}&op=translate`,"_blank");
+  // Retained compatibility entrypoint; never export field speech to a third party.
+  showCapturedTranslationStatus();
 }
 function appendForeignToNotes(){
   const text=$("foreignTranscript").textContent.replace(/\n\nListening:.*/g,"").trim();
