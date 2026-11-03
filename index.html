@@ -64,13 +64,25 @@
     #lw-sidebar.lw-sidebar-collapsed .lw-brand-lockup{padding-left:.65rem;padding-right:.65rem;justify-content:center}
     #lw-sidebar .lw-nav-upgraded:focus-visible{outline:2px solid #67e8f9;outline-offset:2px}
     @media(prefers-reduced-motion:reduce){#lw-sidebar,#lw-sidebar *{transition:none !important}}
+
+    /* Ensure every original ERP and added engagement destination stays reachable. */
+    #lw-sidebar{height:100vh;max-height:100vh;min-height:0;}
+    #lw-sidebar .lw-sidebar-body{height:100%;min-height:0;overflow:hidden;}
+    #lw-sidebar .lw-sidebar-nav{min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:auto;scrollbar-color:#64748b #0f172a;padding-bottom:3rem;flex:1 1 0;}
+    #lw-sidebar .lw-sidebar-nav::-webkit-scrollbar{width:10px;}
+    #lw-sidebar .lw-sidebar-nav::-webkit-scrollbar-track{background:#0f172a;}
+    #lw-sidebar .lw-sidebar-nav::-webkit-scrollbar-thumb{background:#64748b;border:2px solid #0f172a;border-radius:10px;}
+    #lw-sidebar .lw-sidebar-nav>div{margin-top:.45rem;}
+    #lw-sidebar .lw-sidebar-nav>div:first-child{margin-top:0;}
+    #lw-sidebar .lw-nav-upgraded{min-height:2.75rem;}
+    #lw-sidebar .lw-sidebar-nav:focus-visible{outline:2px solid #67e8f9;outline-offset:-2px;}
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-blue-600 selection:text-white flex h-screen overflow-hidden">
 
   <!-- ==================== SIDEBAR ==================== -->
-  <aside id="lw-sidebar" class="w-64 border-r-2 border-slate-800 bg-slate-950 flex flex-col justify-between flex-shrink-0 select-none shadow-2xl">
-    <div>
+  <aside id="lw-sidebar" class="w-64 border-r-2 border-slate-800 bg-slate-950 flex flex-col flex-shrink-0 select-none shadow-2xl">
+    <div class="lw-sidebar-body flex flex-col flex-1 min-h-0">
       <!-- Brand Lockup -->
       <div class="lw-brand-lockup h-16 px-5 border-b-2 border-slate-800 flex items-center gap-3 bg-slate-950">
         <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 via-indigo-600 to-cyan-400 flex items-center justify-center font-mono font-black text-white text-sm shadow-lg shadow-blue-500/30 ring-2 ring-white/20">
@@ -94,7 +106,7 @@
         </button>
       </div>
       <!-- Navigation Links -->
-      <div class="p-3 space-y-4 overflow-y-auto max-h-[calc(100vh-13rem)]">
+      <nav id="lw-sidebar-nav" aria-label="ERP and CRM modules" class="lw-sidebar-nav flex-1 min-h-0 p-3 space-y-2 overflow-y-auto overscroll-contain" tabindex="0">
         <div>
           <div class="lw-nav-section-heading px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono mb-1.5">
             Commercial Operations
@@ -161,7 +173,7 @@
             </button>
           </div>
         </div>
-      </div>
+      </nav>
     </div>
 
   </aside>
