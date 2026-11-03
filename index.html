@@ -43,19 +43,40 @@
       #printable-bol, #printable-bol * { visibility: visible; }
       #printable-bol { position: absolute; left: 0; top: 0; width: 100%; color: #000; background: #fff; }
     }
+
+    /* REGION: LEEWAY_CRM_NAVIGATION — scoped appearance, no ERP data changes. */
+    #lw-sidebar{width:16rem;transition:width .22s ease;overflow:hidden}
+    #lw-sidebar .lw-nav-upgraded{display:flex;align-items:center;gap:.65rem;width:100%;min-height:3rem;padding:.52rem .6rem;text-align:left;border:1px solid transparent;border-radius:.8rem;white-space:nowrap;transition:background .16s,border-color .16s,box-shadow .16s}
+    #lw-sidebar .lw-nav-upgraded:hover{background:#1b2c46;border-color:#475569;box-shadow:0 0 0 1px rgba(56,189,248,.11)}
+    #lw-sidebar .lw-nav-upgraded.bg-blue-600{background:#1d4ed8;border-color:rgba(125,211,252,.72);box-shadow:inset 3px 0 #67e8f9,0 2px 12px rgba(29,78,216,.25)}
+    #lw-sidebar .lw-nav-icon{width:2rem;height:2rem;min-width:2rem;flex:0 0 2rem;display:grid;place-items:center;color:var(--lw-icon-accent);background:color-mix(in srgb,var(--lw-icon-accent) 13%,#0f172a);border:1px solid color-mix(in srgb,var(--lw-icon-accent) 45%,transparent);border-radius:.65rem;box-shadow:inset 0 1px 1px rgba(255,255,255,.08)}
+    #lw-sidebar .lw-nav-icon svg{height:1.28rem;width:1.28rem;display:block}
+    #lw-sidebar .lw-nav-upgraded:hover .lw-nav-icon,#lw-sidebar .lw-nav-upgraded.bg-blue-600 .lw-nav-icon{background:color-mix(in srgb,var(--lw-icon-accent) 23%,#0f172a);border-color:var(--lw-icon-accent)}
+    #lw-sidebar .lw-nav-upgraded.bg-blue-600 .lw-nav-icon{color:white}
+    #lw-sidebar .lw-nav-label{font-size:.72rem;flex:1;min-width:0;white-space:normal;line-height:1.3;font-weight:700}
+    #lw-sidebar .lw-nav-badge{margin-left:auto;flex-shrink:0}
+    #lw-sidebar .lw-sidebar-controls{padding-bottom:.25rem}
+    #lw-sidebar.lw-sidebar-collapsed{width:4.75rem !important}
+    #lw-sidebar.lw-sidebar-collapsed .lw-brand-copy,#lw-sidebar.lw-sidebar-collapsed .lw-nav-label,#lw-sidebar.lw-sidebar-collapsed .lw-nav-badge,#lw-sidebar.lw-sidebar-collapsed .lw-nav-section-heading{display:none !important}
+    #lw-sidebar.lw-sidebar-collapsed .lw-sidebar-controls{justify-content:center;padding-left:0;padding-right:0}
+    #lw-sidebar.lw-sidebar-collapsed .lw-nav-upgraded{justify-content:center !important;padding:.5rem .25rem}
+    #lw-sidebar.lw-sidebar-collapsed .lw-nav-icon{width:2.35rem;height:2.35rem;flex-basis:2.35rem}
+    #lw-sidebar.lw-sidebar-collapsed .lw-brand-lockup{padding-left:.65rem;padding-right:.65rem;justify-content:center}
+    #lw-sidebar .lw-nav-upgraded:focus-visible{outline:2px solid #67e8f9;outline-offset:2px}
+    @media(prefers-reduced-motion:reduce){#lw-sidebar,#lw-sidebar *{transition:none !important}}
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-blue-600 selection:text-white flex h-screen overflow-hidden">
 
   <!-- ==================== SIDEBAR ==================== -->
-  <aside class="w-64 border-r-2 border-slate-800 bg-slate-950 flex flex-col justify-between flex-shrink-0 select-none shadow-2xl">
+  <aside id="lw-sidebar" class="w-64 border-r-2 border-slate-800 bg-slate-950 flex flex-col justify-between flex-shrink-0 select-none shadow-2xl">
     <div>
       <!-- Brand Lockup -->
-      <div class="h-16 px-5 border-b-2 border-slate-800 flex items-center gap-3 bg-slate-950">
+      <div class="lw-brand-lockup h-16 px-5 border-b-2 border-slate-800 flex items-center gap-3 bg-slate-950">
         <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 via-indigo-600 to-cyan-400 flex items-center justify-center font-mono font-black text-white text-sm shadow-lg shadow-blue-500/30 ring-2 ring-white/20">
           LW
         </div>
-        <div>
+        <div class="lw-brand-copy">
           <div class="text-sm font-black text-white tracking-tight flex items-center gap-1.5">
             <span>LEEWAY</span>
             <span class="text-cyan-400 font-mono font-normal">ERP &amp; CRM</span>
@@ -66,10 +87,16 @@
         </div>
       </div>
 
+      <!-- REGION: LEEWAY_CRM_NAVIGATION | TAG: LEEWAY-CRM-NAV-001 -->
+      <div class="lw-sidebar-controls flex justify-end px-3 pt-2">
+        <button id="lw-sidebar-toggle" type="button" aria-controls="lw-sidebar" aria-expanded="true" aria-label="Collapse sidebar" title="Collapse sidebar" class="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-700 bg-slate-900 text-cyan-300 hover:text-white hover:bg-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-400">
+          <svg aria-hidden="true" class="w-5 h-5 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16M4 12h16M4 19h16M10 9l-3 3 3 3"/></svg>
+        </button>
+      </div>
       <!-- Navigation Links -->
       <div class="p-3 space-y-4 overflow-y-auto max-h-[calc(100vh-13rem)]">
         <div>
-          <div class="px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono mb-1.5">
+          <div class="lw-nav-section-heading px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono mb-1.5">
             Commercial Operations
           </div>
           <button onclick="switchTab('crm')" id="nav-crm" class="nav-btn w-full flex items-center justify-between px-3.5 py-2.5 text-xs font-bold rounded-xl bg-blue-600 text-white shadow-lg shadow-blue-600/30 border border-blue-400/40">
@@ -80,14 +107,14 @@
 
         <!-- REGION: LEEWAY_CRM_ENGAGEMENT | TAG: LEEWAY-CRM-ENGAGEMENT-001 -->
         <div class="space-y-1">
-          <div class="px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono mb-1.5">Engagement &amp; Operations</div>
+          <div class="lw-nav-section-heading px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono mb-1.5">Engagement &amp; Operations</div>
           <button onclick="switchTab('voice_capture')" id="nav-voice_capture" class="nav-btn w-full text-left px-3.5 py-2.5 text-xs font-bold rounded-xl text-slate-300 hover:text-white hover:bg-slate-900">🎙️ Voice Capture</button>
           <button onclick="switchTab('todays_route')" id="nav-todays_route" class="nav-btn w-full text-left px-3.5 py-2.5 text-xs font-bold rounded-xl text-slate-300 hover:text-white hover:bg-slate-900">🗓️ Today's Route</button>
           <button onclick="switchTab('campaigns')" id="nav-campaigns" class="nav-btn w-full text-left px-3.5 py-2.5 text-xs font-bold rounded-xl text-slate-300 hover:text-white hover:bg-slate-900">📣 Campaigns</button>
         </div>
 
         <div>
-          <div class="px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono mb-1.5">
+          <div class="lw-nav-section-heading px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono mb-1.5">
             Engineering &amp; Build
           </div>
           <div class="space-y-1">
@@ -102,7 +129,7 @@
         </div>
 
         <div>
-          <div class="px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono mb-1.5">
+          <div class="lw-nav-section-heading px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono mb-1.5">
             Fulfillment &amp; Logistics
           </div>
           <button onclick="switchTab('warehousing')" id="nav-warehousing" class="nav-btn w-full flex items-center justify-between px-3.5 py-2.5 text-xs font-bold rounded-xl text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent hover:border-slate-800 transition-all">
@@ -112,7 +139,7 @@
         </div>
 
         <div>
-          <div class="px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono mb-1.5">
+          <div class="lw-nav-section-heading px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono mb-1.5">
             Edge Hardware Subsystem
           </div>
           <button onclick="switchTab('device_bridge')" id="nav-device_bridge" class="nav-btn w-full flex items-center justify-between px-3.5 py-2.5 text-xs font-bold rounded-xl text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent hover:border-slate-800 transition-all">
@@ -122,7 +149,7 @@
         </div>
 
         <div>
-          <div class="px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono mb-1.5">
+          <div class="lw-nav-section-heading px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono mb-1.5">
             External &amp; Governance
           </div>
           <div class="space-y-1">
@@ -137,22 +164,6 @@
       </div>
     </div>
 
-    <!-- Sidebar Footer -->
-    <div class="p-3 border-t-2 border-slate-800 bg-slate-950 text-[11px]">
-      <div class="p-3.5 rounded-xl bg-slate-900 border-2 border-slate-750 space-y-1.5 text-slate-300 shadow-xl">
-        <div class="flex items-center justify-between font-mono text-[10px]">
-          <span class="font-bold text-emerald-400">LeeWay-Standards-v1.4</span>
-          <span class="text-slate-400">Root-Trust</span>
-        </div>
-        <div class="text-[10px] text-amber-300 italic font-mono font-semibold">
-          "Context is not Authority"
-        </div>
-        <div class="pt-2 border-t border-slate-800 flex items-center justify-between text-[10px]">
-          <span class="text-cyan-300 font-mono font-bold">Standalone Single HTML</span>
-          <button onclick="downloadStandaloneSelf()" class="text-emerald-400 font-bold hover:underline">Download</button>
-        </div>
-      </div>
-    </div>
   </aside>
 
   <!-- ==================== MAIN VIEWPORT ==================== -->
@@ -1804,5 +1815,6 @@ services:
     });
   </script>
   <script src="./modules/engagement-operations.js" defer></script>
+  <script src="./modules/sidebar-navigation.js" defer></script>
 </body>
 </html>
