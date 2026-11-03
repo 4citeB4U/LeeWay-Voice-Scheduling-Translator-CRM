@@ -78,6 +78,14 @@
           </button>
         </div>
 
+        <!-- REGION: LEEWAY_CRM_ENGAGEMENT | TAG: LEEWAY-CRM-ENGAGEMENT-001 -->
+        <div class="space-y-1">
+          <div class="px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono mb-1.5">Engagement &amp; Operations</div>
+          <button onclick="switchTab('voice_capture')" id="nav-voice_capture" class="nav-btn w-full text-left px-3.5 py-2.5 text-xs font-bold rounded-xl text-slate-300 hover:text-white hover:bg-slate-900">🎙️ Voice Capture</button>
+          <button onclick="switchTab('todays_route')" id="nav-todays_route" class="nav-btn w-full text-left px-3.5 py-2.5 text-xs font-bold rounded-xl text-slate-300 hover:text-white hover:bg-slate-900">🗓️ Today's Route</button>
+          <button onclick="switchTab('campaigns')" id="nav-campaigns" class="nav-btn w-full text-left px-3.5 py-2.5 text-xs font-bold rounded-xl text-slate-300 hover:text-white hover:bg-slate-900">📣 Campaigns</button>
+        </div>
+
         <div>
           <div class="px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono mb-1.5">
             Engineering &amp; Build
@@ -305,6 +313,22 @@
         <div class="flex flex-row items-start gap-5 overflow-x-auto pb-6 pt-1 px-1 scrollbar-thin w-full" id="kanban-board-container">
           <!-- Dynamic rendering via JS with razor-sharp borders and left accent rails -->
         </div>
+      </section>
+
+      <section id="tab-voice_capture" class="tab-pane hidden space-y-6">
+        <header class="pb-4 border-b-2 border-slate-800"><h2 class="text-2xl font-black">Voice Capture</h2><p class="text-xs text-slate-400 mt-2">Browser microphone recording, consent-confirmed, stored locally. No live CRM attachment or transcription.</p></header>
+        <div class="bg-slate-900 border-2 border-slate-750 rounded-2xl p-6 space-y-4"><div id="lw-voice-status" role="status" class="text-cyan-300 text-xs">Recorder idle.</div><div class="grid md:grid-cols-2 gap-3"><label class="block text-xs text-slate-300">Recording title<input id="lw-voice-title" type="text" maxlength="160" class="mt-1 w-full bg-slate-950 border border-slate-700 rounded-lg p-3 text-white"></label><label class="block text-xs text-slate-300">CRM / ERP record reference<input id="lw-voice-link" type="text" maxlength="160" class="mt-1 w-full bg-slate-950 border border-slate-700 rounded-lg p-3 text-white"></label></div><label class="text-xs flex items-center gap-2"><input id="lw-voice-consent" type="checkbox"> I confirm participant consent and recording authorization.</label><div class="flex gap-2"><button id="lw-voice-start" onclick="lwStartCapture()" class="px-4 py-2 rounded-lg bg-blue-600 text-xs font-bold">Start recording</button><button id="lw-voice-stop" onclick="lwStopCapture()" disabled class="px-4 py-2 rounded-lg bg-rose-700 disabled:opacity-40 text-xs font-bold">Stop &amp; save</button></div></div>
+        <div class="bg-slate-900 border-2 border-slate-750 rounded-2xl p-6"><h3 class="font-bold mb-3">Captured sessions</h3><div id="lw-recordings" class="space-y-3 text-xs"></div></div>
+      </section>
+      <section id="tab-todays_route" class="tab-pane hidden space-y-6">
+        <header class="pb-4 border-b-2 border-slate-800"><h2 class="text-2xl font-black">Today's Route</h2><p class="text-xs text-slate-400 mt-2">Local daily schedule, elevated stops and critical events; no GPS or external dispatch synchronization.</p></header>
+        <div class="bg-slate-900 border-2 border-slate-750 rounded-2xl p-6 space-y-4"><div class="grid md:grid-cols-2 gap-3"><label class="block text-xs text-slate-300">Date<input id="lw-route-date" type="date" onchange="lwRenderRoutes()" class="mt-1 w-full bg-slate-950 border border-slate-700 rounded-lg p-3 text-white"></label><label class="block text-xs text-slate-300">Stop or event<input id="lw-route-title" type="text" maxlength="160" class="mt-1 w-full bg-slate-950 border border-slate-700 rounded-lg p-3 text-white"></label><label class="block text-xs text-slate-300">Time<input id="lw-route-time" type="time"  class="mt-1 w-full bg-slate-950 border border-slate-700 rounded-lg p-3 text-white"></label><label class="block text-xs text-slate-300">Priority<select id="lw-route-priority" class="mt-1 w-full bg-slate-950 border border-slate-700 rounded-lg p-3 text-white"><option>Normal</option><option>Elevated</option><option>Critical</option></select></label><label class="block text-xs text-slate-300">Location, customer or dispatch reference<input id="lw-route-place" type="text" maxlength="300" class="mt-1 w-full bg-slate-950 border border-slate-700 rounded-lg p-3 text-white"></label></div><button onclick="lwAddRoute()" class="px-4 py-2 rounded-lg bg-emerald-600 text-xs font-bold">Add route event</button></div>
+        <div class="bg-slate-900 border-2 border-slate-750 rounded-2xl p-6"><h3 class="font-bold mb-3">Daily schedule &amp; escalations</h3><div id="lw-route-list" class="space-y-3 text-xs"></div></div>
+      </section>
+      <section id="tab-campaigns" class="tab-pane hidden space-y-6">
+        <header class="pb-4 border-b-2 border-slate-800"><h2 class="text-2xl font-black">Campaigns</h2><p class="text-xs text-slate-400 mt-2">Compose outreach plans and export drafts. No email, SMS, phone or advertising is sent.</p></header>
+        <div class="bg-slate-900 border-2 border-slate-750 rounded-2xl p-6 space-y-4"><div class="grid md:grid-cols-2 gap-3"><label class="block text-xs text-slate-300">Campaign name<input id="lw-campaign-name" type="text" maxlength="160" class="mt-1 w-full bg-slate-950 border border-slate-700 rounded-lg p-3 text-white"></label><label class="block text-xs text-slate-300">Channel<select id="lw-campaign-channel" class="mt-1 w-full bg-slate-950 border border-slate-700 rounded-lg p-3 text-white"><option>Email</option><option>Phone Calls</option><option>Targeted Marketing</option><option>SMS</option><option>Multichannel</option><option>Event</option></select></label><label class="block text-xs text-slate-300">Audience / targeting rule<input id="lw-campaign-audience" type="text" maxlength="300" class="mt-1 w-full bg-slate-950 border border-slate-700 rounded-lg p-3 text-white"></label><label class="block text-xs text-slate-300">Planned launch<input id="lw-campaign-date" type="date"  class="mt-1 w-full bg-slate-950 border border-slate-700 rounded-lg p-3 text-white"></label></div><label class="block text-xs text-slate-300">Message, call script or creative brief<textarea id="lw-campaign-content" maxlength="10000" rows="5" class="mt-1 w-full bg-slate-950 border border-slate-700 rounded-lg p-3 text-white"></textarea></label><button onclick="lwSaveCampaign()" class="px-4 py-2 rounded-lg bg-blue-600 text-xs font-bold">Save campaign draft</button><p class="text-xs text-amber-300">Local draft only. Provider connection, suppression lists and explicit approval are required before sending.</p></div>
+        <div class="bg-slate-900 border-2 border-slate-750 rounded-2xl p-6"><h3 class="font-bold mb-3">Campaign workspace</h3><div id="lw-campaign-list" class="space-y-3 text-xs"></div></div>
       </section>
 
       <!-- ==================== TAB 2: PRODUCT ENGINEERING & BOM ==================== -->
@@ -963,7 +987,10 @@ services:
         warehousing: ['Fulfillment & Logistics', 'Multi-Warehouse Inventory & Dispatches'],
         device_bridge: ['Edge Hardware Subsystem', 'LEEWAY-DEVICE-BRIDGE Interface'],
         integrations: ['External Architecture', 'Unified National CRM Gateway'],
-        infrastructure: ['Platform Governance', 'Sovereign Docker Topology & Veritas']
+        infrastructure: ['Platform Governance', 'Sovereign Docker Topology & Veritas'],
+        voice_capture: ['Engagement & Operations', 'Voice Capture'],
+        todays_route: ['Engagement & Operations', "Today's Route"],
+        campaigns: ['Engagement & Operations', 'Campaigns']
       };
 
       if (breadcrumbMap[tabId]) {
@@ -1776,5 +1803,6 @@ services:
       }
     });
   </script>
+  <script src="./modules/engagement-operations.js" defer></script>
 </body>
 </html>
