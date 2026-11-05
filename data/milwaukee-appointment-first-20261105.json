@@ -1,0 +1,317 @@
+{
+  "schema": "leeway.crm.milwaukee.appointment-campaign.v1",
+  "campaignId": "LW-MKE-NORTH-AVENUE-2026-11",
+  "displayName": "Milwaukee North Avenue — Appointment-first Business Operations",
+  "asOf": "2026-11-05",
+  "campaignType": "RESEARCH_AND_MANUAL_APPOINTMENT_OUTREACH",
+  "geographicScope": "Initial North Avenue corridor sample, roughly W 10th–25th Streets; expand to the requested 2–3-mile territory only after address-level radius verification.",
+  "areaBoundaryVerified": false,
+  "privateOwnerOriginIncluded": false,
+  "notes": "Public business-listing research only. No lead has been called, emailed, visited, qualified, consented, or scheduled by this campaign. No personal address, credentials, customer records, or business email addresses are included.",
+  "requiredBeforeSending": [
+    "Check current public contact details and business open status",
+    "Confirm relevant state/federal marketing requirements and opt-outs",
+    "Obtain Creator approval of channel, recipient, and exact message",
+    "Use authorized messaging/calling connector; never infer a sent result from a draft"
+  ],
+  "prospects": [
+    {
+      "id": "mke-na-0001",
+      "name": "American Subs",
+      "industry": "Restaurant",
+      "address": "1114 W North Ave, Milwaukee, WI 53205",
+      "phone": "+1 414-264-6500",
+      "publicEmail": null,
+      "source": "business listing observed 2026-11-05",
+      "lastSourceReview": "2026-11-05",
+      "confidence": "PUBLIC_DIRECTORY_CANDIDATE",
+      "ownerVerified": false,
+      "initialStatus": "RESEARCHED_NOT_CONTACTED",
+      "zone": "North Avenue — near 11th",
+      "engagementIdea": "Customer return visits, opt-in rewards, takeout follow-ups and photo-sharing with consent",
+      "ecosystemTopics": [
+        "Delivery/order pickup",
+        "Commercial kitchen efficiency",
+        "Storefront incentives",
+        "Food supplier reliability"
+      ]
+    },
+    {
+      "id": "mke-na-0002",
+      "name": "Upper Cutz",
+      "industry": "Barber/Salon",
+      "address": "1100 W North Ave, Milwaukee, WI 53205",
+      "phone": null,
+      "publicEmail": null,
+      "source": "business listing observed 2026-11-05",
+      "lastSourceReview": "2026-11-05",
+      "confidence": "PUBLIC_DIRECTORY_CANDIDATE",
+      "ownerVerified": false,
+      "initialStatus": "RESEARCHED_NOT_CONTACTED",
+      "zone": "North Avenue — near 11th",
+      "engagementIdea": "Rebooking, customer reviews, referrals and appointment experience",
+      "ecosystemTopics": [
+        "No-show prevention",
+        "Local marketing",
+        "Staff scheduling",
+        "Energy savings"
+      ]
+    },
+    {
+      "id": "mke-na-0003",
+      "name": "Kingdom of Hair",
+      "industry": "Barber/Salon",
+      "address": "1000 W North Ave, Milwaukee, WI 53205",
+      "phone": "+1 414-539-3790",
+      "publicEmail": null,
+      "source": "business listing observed 2026-11-05",
+      "lastSourceReview": "2026-11-05",
+      "confidence": "PUBLIC_DIRECTORY_CANDIDATE",
+      "ownerVerified": false,
+      "initialStatus": "RESEARCHED_NOT_CONTACTED",
+      "zone": "North Avenue — near 10th",
+      "engagementIdea": "Customer rebooking, referrals, post-service reviews and promotions",
+      "ecosystemTopics": [
+        "Appointment management",
+        "Staff scheduling",
+        "Local business programs",
+        "Customer retention"
+      ]
+    },
+    {
+      "id": "mke-na-0004",
+      "name": "New Rainbow Foods",
+      "industry": "Grocery/Convenience",
+      "address": "1433 W North Ave, Milwaukee, WI 53205",
+      "phone": "+1 414-265-7481",
+      "publicEmail": null,
+      "source": "business listing observed 2026-11-05",
+      "lastSourceReview": "2026-11-05",
+      "confidence": "PUBLIC_DIRECTORY_CANDIDATE",
+      "ownerVerified": false,
+      "initialStatus": "RESEARCHED_NOT_CONTACTED",
+      "zone": "North Avenue — near 14th",
+      "engagementIdea": "Neighborhood loyalty, promotions, shopping convenience and repeat-customer feedback",
+      "ecosystemTopics": [
+        "Food distributors",
+        "Refrigeration rebates",
+        "Vendor pricing",
+        "Retail grants"
+      ]
+    },
+    {
+      "id": "mke-na-0005",
+      "name": "Galst Food Market",
+      "industry": "Grocery/Convenience",
+      "address": "1622 W North Ave, Milwaukee, WI 53205",
+      "phone": "+1 414-264-2993",
+      "publicEmail": null,
+      "source": "business listing observed 2026-11-05",
+      "lastSourceReview": "2026-11-05",
+      "confidence": "PUBLIC_DIRECTORY_CANDIDATE",
+      "ownerVerified": false,
+      "initialStatus": "RESEARCHED_NOT_CONTACTED",
+      "zone": "North Avenue — near 16th",
+      "engagementIdea": "Local shopping experience, feedback, loyalty and vendor coordination",
+      "ecosystemTopics": [
+        "Refrigeration and lighting rebates",
+        "Supplier reliability",
+        "Storefront incentives",
+        "Staff workflow"
+      ]
+    },
+    {
+      "id": "mke-na-0006",
+      "name": "Cosmo Beauty",
+      "industry": "Retail/Beauty Supply",
+      "address": "2213 W North Ave, Milwaukee, WI 53205",
+      "phone": "+1 414-930-0022",
+      "publicEmail": null,
+      "source": "business listing observed 2026-11-05",
+      "lastSourceReview": "2026-11-05",
+      "confidence": "PUBLIC_DIRECTORY_CANDIDATE",
+      "ownerVerified": false,
+      "initialStatus": "RESEARCHED_NOT_CONTACTED",
+      "zone": "North Avenue — near 22nd",
+      "engagementIdea": "Repeat purchases, stock requests, local partnerships and opt-in customer stories",
+      "ecosystemTopics": [
+        "Suppliers and delivery reliability",
+        "Customer retention",
+        "Retail signage",
+        "Energy discounts"
+      ]
+    },
+    {
+      "id": "mke-na-0007",
+      "name": "North Avenue Marketplace BID 32",
+      "industry": "Business District Organization",
+      "address": "2450 W North Ave, Milwaukee, WI 53205",
+      "phone": "+1 414-430-0325",
+      "publicEmail": null,
+      "source": "City of Milwaukee BID 32 directory and business listing observed 2026-11-05",
+      "sourceUrl": "https://city.milwaukee.gov/DCD/BusinessToolbox/bids/NorthAvenueMarketplace",
+      "lastSourceReview": "2026-11-05",
+      "confidence": "OFFICIAL_PROGRAM_CONTACT",
+      "ownerVerified": false,
+      "initialStatus": "RESEARCHED_NOT_CONTACTED",
+      "zone": "North Avenue — near 24th",
+      "engagementIdea": "Ask about corridor priorities, business assistance, funding and introductions; do not claim BID partnership",
+      "ecosystemTopics": [
+        "Commercial corridor growth",
+        "Grants and financing",
+        "Business-owner network",
+        "Neighborhood campaigns"
+      ]
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "milwaukee-commercial-revitalization",
+      "title": "Milwaukee Commercial Revitalization Grants",
+      "audience": "Eligible city commercial-corridor businesses and property owners",
+      "summary": "City commercial signage (up to $2,500), façade (up to $5,000), storefront activation (up to $25,000) and Retail Investment Fund programs, each with separate conditions.",
+      "url": "https://city.milwaukee.gov/dcd/business-toolbox/commercial-revitalization-fund",
+      "qualifier": "Reimbursable, matching funds/eligible costs and preapproval may apply; next posted 2026 deadlines Nov 5 and Dec 3. Verify funds and actual deadlines directly before suggesting eligibility.",
+      "status": "PROGRAM_PUBLISHED_ELIGIBILITY_UNCHECKED",
+      "sourceChecked": "2026-11-05",
+      "tags": [
+        "Retail",
+        "Restaurant",
+        "Grocery",
+        "Barber/Salon"
+      ]
+    },
+    {
+      "id": "near-west-side-bid10",
+      "title": "Near West Side BID 10 support",
+      "audience": "Eligible businesses/property owners inside BID 10 boundaries",
+      "summary": "BID 10 lists possible assistance for signage, security cameras, marketing, education/consulting and public art, subject to available funds and board discretion.",
+      "url": "https://nearwestsidemke.org/business-resources/",
+      "qualifier": "Boundaries and current funding eligibility must be checked for each location; never promise grants.",
+      "status": "PROGRAM_PUBLISHED_ELIGIBILITY_UNCHECKED",
+      "sourceChecked": "2026-11-05",
+      "tags": [
+        "Retail",
+        "Restaurant",
+        "Grocery",
+        "Barber/Salon"
+      ]
+    },
+    {
+      "id": "focus-energy-wi-2026",
+      "title": "Focus on Energy business incentives",
+      "audience": "Qualifying Wisconsin businesses and utility customers",
+      "summary": "Energy advisor services and 2026 rebates for lighting, HVAC and commercial refrigeration/equipment improvements.",
+      "url": "https://focusonenergy.com/business/rebates",
+      "qualifier": "Specific utility, equipment, purchase/installation dates and program limits control qualification; no guaranteed dollar savings.",
+      "status": "PROGRAM_PUBLISHED_ELIGIBILITY_UNCHECKED",
+      "sourceChecked": "2026-11-05",
+      "tags": [
+        "Restaurant",
+        "Grocery/Convenience",
+        "Retail/Beauty Supply",
+        "Barber/Salon"
+      ]
+    },
+    {
+      "id": "milwaukee-county-building-bridges",
+      "title": "Milwaukee County Building Bridges business resources",
+      "audience": "Local businesses opening or expanding brick-and-mortar locations",
+      "summary": "County program offers small-business liaison support, commercial corridor assistance and limited funding possibilities.",
+      "url": "https://county.milwaukee.gov/EN/Administrative-Services/Economic-Development/Business-Resources",
+      "qualifier": "Funding windows, amounts and remaining availability must be reconfirmed directly; don't assume a grant is open.",
+      "status": "PROGRAM_PUBLISHED_ELIGIBILITY_UNCHECKED",
+      "sourceChecked": "2026-11-05",
+      "tags": [
+        "Retail",
+        "Restaurant",
+        "Grocery",
+        "Barber/Salon"
+      ]
+    },
+    {
+      "id": "milwaukee-medc",
+      "title": "Milwaukee Economic Development Corporation",
+      "audience": "Small businesses seeking financing or capital investment",
+      "summary": "Milwaukee's city business toolbox identifies MEDC as a nonprofit offering low-interest loans and business resources.",
+      "url": "https://city.milwaukee.gov/dcd/business-toolbox",
+      "qualifier": "Loans are financing, not free grants; underwriting, terms and current availability require direct verification.",
+      "status": "PROGRAM_PUBLISHED_ELIGIBILITY_UNCHECKED",
+      "sourceChecked": "2026-11-05",
+      "tags": [
+        "Retail",
+        "Restaurant",
+        "Grocery",
+        "Barber/Salon"
+      ]
+    },
+    {
+      "id": "north-avenue-bid32",
+      "title": "North Avenue Marketplace BID 32",
+      "audience": "Business owners and partners in the BID 32 area",
+      "summary": "North Avenue Marketplace is a city-listed commercial district with an official local program contact.",
+      "url": "https://city.milwaukee.gov/DCD/BusinessToolbox/bids/NorthAvenueMarketplace",
+      "qualifier": "Ask BID staff which specific 2026 assistance, partnerships and property boundaries apply; no assumption of funding.",
+      "status": "ORGANIZATION_LISTED_NO_BENEFIT_GUARANTEE",
+      "sourceChecked": "2026-11-05",
+      "tags": [
+        "Retail",
+        "Restaurant",
+        "Grocery",
+        "Barber/Salon",
+        "Business District Organization"
+      ]
+    },
+    {
+      "id": "uwm-sbdc",
+      "title": "UW-Milwaukee Small Business Development Center",
+      "audience": "Entrepreneurs and existing business owners in Greater Milwaukee",
+      "summary": "No-cost confidential business advising on finance, marketing, expansion, management and business planning.",
+      "url": "https://wisconsinsbdc.org/centers/milwaukee/",
+      "qualifier": "Consultation availability and individual services depend on program intake. Not a cash grant or LeeWay referral partnership.",
+      "status": "OFFICIAL_SERVICE_PUBLISHED",
+      "sourceChecked": "2026-11-05",
+      "tags": [
+        "Restaurant",
+        "Grocery/Convenience",
+        "Retail/Beauty Supply",
+        "Barber/Salon",
+        "Business District Organization"
+      ]
+    },
+    {
+      "id": "wwbic-finance-training",
+      "title": "WWBIC Milwaukee — lending and business education",
+      "audience": "Small businesses and startup/expansion entrepreneurs",
+      "summary": "Business education, one-on-one technical assistance and loans or capital access, subject to lending criteria.",
+      "url": "https://www.wwbic.com/office-locations/milwaukee/",
+      "qualifier": "Loans must be repaid; WWBIC assesses eligibility and terms. No approval, affiliation or business introductions are guaranteed.",
+      "status": "OFFICIAL_SERVICE_PUBLISHED",
+      "sourceChecked": "2026-11-05",
+      "tags": [
+        "Restaurant",
+        "Grocery/Convenience",
+        "Retail/Beauty Supply",
+        "Barber/Salon",
+        "Business District Organization"
+      ]
+    },
+    {
+      "id": "shop-employer-health",
+      "title": "SHOP small-employer health insurance information",
+      "audience": "Eligible small employers with staff, generally 1–50 FTE employees",
+      "summary": "HealthCare.gov explains small-employer SHOP health and dental insurance options, eligibility and enrollment through insurers or qualified brokers.",
+      "url": "https://www.healthcare.gov/small-businesses/choose-and-enroll/qualify-for-shop-marketplace/",
+      "qualifier": "Actual plans, participation rules, tax credits and availability require official eligibility checks and licensed professional advice; not insurance brokerage by LeeWay.",
+      "status": "OFFICIAL_SERVICE_PUBLISHED",
+      "sourceChecked": "2026-11-05",
+      "tags": [
+        "Restaurant",
+        "Grocery/Convenience",
+        "Retail/Beauty Supply",
+        "Barber/Salon",
+        "Business District Organization"
+      ]
+    }
+  ]
+}

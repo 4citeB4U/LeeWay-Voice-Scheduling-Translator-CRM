@@ -208,6 +208,7 @@
 
       <!-- ==================== TAB 1: COMMERCIAL CRM ==================== -->
       <section id="tab-crm" class="tab-pane space-y-6">
+        <p class="text-xs text-amber-200 p-3 rounded-lg border border-amber-700 bg-amber-950/30">LEGACY DEMONSTRATION DATA: the default Kanban opportunities, revenue graphics, provider integration statuses, device-console messages and sample Veritas cards below are illustrative, NOT verified LeeWay client revenue, active provider connections, actual device probes or independent receipts. Real Milwaukee outreach outcomes are recorded separately in the Campaigns tab.</p>
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b-2 border-slate-800">
           <div>
             <h2 class="text-2xl font-black text-white tracking-tight flex items-center gap-2">
@@ -352,6 +353,39 @@
         <header class="pb-4 border-b-2 border-slate-800"><h2 class="text-2xl font-black">Campaigns</h2><p class="text-xs text-slate-400 mt-2">Compose outreach plans and export drafts. No email, SMS, phone or advertising is sent.</p></header>
         <div class="bg-slate-900 border-2 border-slate-750 rounded-2xl p-6 space-y-4"><div class="grid md:grid-cols-2 gap-3"><label class="block text-xs text-slate-300">Campaign name<input id="lw-campaign-name" type="text" maxlength="160" class="mt-1 w-full bg-slate-950 border border-slate-700 rounded-lg p-3 text-white"></label><label class="block text-xs text-slate-300">Channel<select id="lw-campaign-channel" class="mt-1 w-full bg-slate-950 border border-slate-700 rounded-lg p-3 text-white"><option>Email</option><option>Phone Calls</option><option>Targeted Marketing</option><option>SMS</option><option>Multichannel</option><option>Event</option></select></label><label class="block text-xs text-slate-300">Audience / targeting rule<input id="lw-campaign-audience" type="text" maxlength="300" class="mt-1 w-full bg-slate-950 border border-slate-700 rounded-lg p-3 text-white"></label><label class="block text-xs text-slate-300">Planned launch<input id="lw-campaign-date" type="date"  class="mt-1 w-full bg-slate-950 border border-slate-700 rounded-lg p-3 text-white"></label></div><label class="block text-xs text-slate-300">Message, call script or creative brief<textarea id="lw-campaign-content" maxlength="10000" rows="5" class="mt-1 w-full bg-slate-950 border border-slate-700 rounded-lg p-3 text-white"></textarea></label><button onclick="lwSaveCampaign()" class="px-4 py-2 rounded-lg bg-blue-600 text-xs font-bold">Save campaign draft</button><p class="text-xs text-amber-300">Local draft only. Provider connection, suppression lists and explicit approval are required before sending.</p></div>
         <div class="bg-slate-900 border-2 border-slate-750 rounded-2xl p-6"><h3 class="font-bold mb-3">Campaign workspace</h3><div id="lw-campaign-list" class="space-y-3 text-xs"></div></div>
+        <div class="bg-slate-900 border-2 border-cyan-800 rounded-2xl p-6 space-y-4" id="lw-mke-campaign-root">
+          <!-- REGION: LEEWAY_MKE_APPOINTMENT_CAMPAIGN / STATUS: PRIVATE_BROWSER_WORKSPACE -->
+          <div class="flex items-start justify-between flex-wrap gap-3">
+            <div>
+              <h3 class="text-lg font-bold text-cyan-200">Milwaukee North Avenue — Appointment-First Campaign</h3>
+              <p class="text-xs text-slate-300 mt-1">LeeWay Industries internal campaign: researched businesses, actual outcomes, follow-ups, and business-support intelligence. No paper forms.</p>
+            </div>
+            <span class="text-[10px] text-amber-300 border border-amber-700 rounded-lg px-2 py-1 font-semibold">RESEARCH / NO OUTREACH SENT</span>
+          </div>
+          <p id="lw-mke-date" class="text-xs text-slate-400">Loading verified public research sources…</p>
+          <p class="text-xs text-amber-200 bg-amber-950/30 border border-amber-700 p-3 rounded-xl">
+            Truth boundary: research is not a phone call; a campaign draft is not an email; a requested appointment is not a confirmed meeting.
+            This browser's saved CRM notes are NOT automatically synchronized to another device. No automated calling or sending is enabled.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <button id="lw-mke-init" type="button" class="px-4 py-2 rounded-lg bg-cyan-700 hover:bg-cyan-600 text-white text-xs font-bold">Start private campaign</button>
+            <button id="lw-mke-campaign-draft" type="button" class="px-4 py-2 rounded-lg bg-slate-800 border border-slate-600 text-xs font-bold">Prepare existing CRM campaign draft</button>
+            <button id="lw-mke-export" type="button" class="px-4 py-2 rounded-lg bg-slate-800 border border-slate-600 text-xs font-bold">Export private campaign backup</button>
+          </div>
+          <p id="lw-mke-message" role="status" aria-live="polite" class="text-xs text-cyan-200"></p>
+          <p id="lw-mke-metrics" class="text-xs font-semibold text-slate-200">No contacts performed by the CRM.</p>
+          <div class="grid lg:grid-cols-2 gap-4">
+            <div>
+              <h4 class="font-bold text-sm mb-2 text-white">Researched local businesses and business-district partners</h4>
+              <div id="lw-mke-prospects" class="space-y-3 max-h-[42rem] overflow-auto"></div>
+            </div>
+            <div>
+              <h4 class="font-bold text-sm mb-2 text-white">Public programs and business ecosystem support</h4>
+              <p class="text-xs text-slate-400 mb-2">Only share verified program links after checking location, eligibility, deadlines and remaining funds. Never promise a grant or savings.</p>
+              <div id="lw-mke-resources" class="max-h-[42rem] overflow-auto"></div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- ==================== TAB 2: PRODUCT ENGINEERING & BOM ==================== -->
@@ -620,6 +654,7 @@
 
       <!-- ==================== TAB 7: SOVEREIGN INFRASTRUCTURE ==================== -->
       <section id="tab-infrastructure" class="tab-pane hidden space-y-6">
+        <p class="text-xs text-amber-200 p-3 border border-amber-700 bg-amber-950/30 rounded-xl">LEGACY SAMPLE TELEMETRY: the original cards below are illustrative, not live Veritas approvals, signed receipts or infrastructure health checks. Contact/prospect activities in Campaigns have separate, explicit owner-recorded truth status.</p>
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b-2 border-slate-800">
           <div>
             <h2 class="text-2xl font-black text-white tracking-tight flex items-center gap-2">
@@ -1589,10 +1624,10 @@ services:
       if (!container) return;
 
       const crms = [
-        { name: 'Salesforce Sales Cloud', endpoint: 'https://login.salesforce.com/services/oauth2/token', status: 'connected', events: 1420, rail: 'border-l-[6px] border-l-blue-500' },
-        { name: 'HubSpot CRM Suite', endpoint: 'https://api.hubapi.com/crm/v3/objects/deals', status: 'connected', events: 890, rail: 'border-l-[6px] border-l-orange-500' },
-        { name: 'Microsoft Dynamics 365', endpoint: 'https://login.microsoftonline.com/common/oauth2/v2.0', status: 'active', events: 450, rail: 'border-l-[6px] border-l-cyan-400' },
-        { name: 'Monday.com Work OS', endpoint: 'https://api.monday.com/v2', status: 'connected', events: 630, rail: 'border-l-[6px] border-l-purple-500' }
+        { name: 'Salesforce Sales Cloud', endpoint: 'https://login.salesforce.com/services/oauth2/token', status: 'demo not connected', events: 1420, rail: 'border-l-[6px] border-l-blue-500' },
+        { name: 'HubSpot CRM Suite', endpoint: 'https://api.hubapi.com/crm/v3/objects/deals', status: 'demo not connected', events: 890, rail: 'border-l-[6px] border-l-orange-500' },
+        { name: 'Microsoft Dynamics 365', endpoint: 'https://login.microsoftonline.com/common/oauth2/v2.0', status: 'demo not connected', events: 450, rail: 'border-l-[6px] border-l-cyan-400' },
+        { name: 'Monday.com Work OS', endpoint: 'https://api.monday.com/v2', status: 'demo not connected', events: 630, rail: 'border-l-[6px] border-l-purple-500' }
       ];
 
       container.innerHTML = crms.map(c => `
@@ -1604,7 +1639,7 @@ services:
           <div class="text-slate-400 text-[11px] font-mono truncate">${c.endpoint}</div>
           <div class="pt-2.5 border-t border-slate-800 flex justify-between font-mono text-[11px]">
             <span>Synced Events: <strong class="text-cyan-300">${c.events}</strong></span>
-            <span class="text-emerald-400 font-bold">LIVE DUPLEX</span>
+            <span class="text-amber-300 font-bold">DEMO — NOT CONNECTED</span>
           </div>
         </div>
       `).join('');
@@ -1828,5 +1863,6 @@ services:
   </script>
   <script src="./modules/engagement-operations.js" defer></script>
   <script src="./modules/sidebar-navigation.js" defer></script>
+  <script src="./modules/milwaukee-outreach.js" defer></script>
 </body>
 </html>
