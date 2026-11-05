@@ -654,6 +654,7 @@
 
       <!-- ==================== TAB 7: SOVEREIGN INFRASTRUCTURE ==================== -->
       <section id="tab-infrastructure" class="tab-pane hidden space-y-6">
+        <p class="text-xs text-amber-200 p-3 border border-amber-700 bg-amber-950/30 rounded-xl">LEGACY SAMPLE TELEMETRY: the original cards below are illustrative, not live Veritas approvals, signed receipts or infrastructure health checks. Contact/prospect activities in Campaigns have separate, explicit owner-recorded truth status.</p>
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b-2 border-slate-800">
           <div>
             <h2 class="text-2xl font-black text-white tracking-tight flex items-center gap-2">
@@ -1623,10 +1624,10 @@ services:
       if (!container) return;
 
       const crms = [
-        { name: 'Salesforce Sales Cloud', endpoint: 'https://login.salesforce.com/services/oauth2/token', status: 'connected', events: 1420, rail: 'border-l-[6px] border-l-blue-500' },
-        { name: 'HubSpot CRM Suite', endpoint: 'https://api.hubapi.com/crm/v3/objects/deals', status: 'connected', events: 890, rail: 'border-l-[6px] border-l-orange-500' },
-        { name: 'Microsoft Dynamics 365', endpoint: 'https://login.microsoftonline.com/common/oauth2/v2.0', status: 'active', events: 450, rail: 'border-l-[6px] border-l-cyan-400' },
-        { name: 'Monday.com Work OS', endpoint: 'https://api.monday.com/v2', status: 'connected', events: 630, rail: 'border-l-[6px] border-l-purple-500' }
+        { name: 'Salesforce Sales Cloud', endpoint: 'https://login.salesforce.com/services/oauth2/token', status: 'demo not connected', events: 1420, rail: 'border-l-[6px] border-l-blue-500' },
+        { name: 'HubSpot CRM Suite', endpoint: 'https://api.hubapi.com/crm/v3/objects/deals', status: 'demo not connected', events: 890, rail: 'border-l-[6px] border-l-orange-500' },
+        { name: 'Microsoft Dynamics 365', endpoint: 'https://login.microsoftonline.com/common/oauth2/v2.0', status: 'demo not connected', events: 450, rail: 'border-l-[6px] border-l-cyan-400' },
+        { name: 'Monday.com Work OS', endpoint: 'https://api.monday.com/v2', status: 'demo not connected', events: 630, rail: 'border-l-[6px] border-l-purple-500' }
       ];
 
       container.innerHTML = crms.map(c => `
