@@ -261,6 +261,57 @@
         "Barber/Salon",
         "Business District Organization"
       ]
+    },
+    {
+      "id": "uwm-sbdc",
+      "title": "UW-Milwaukee Small Business Development Center",
+      "audience": "Entrepreneurs and existing business owners in Greater Milwaukee",
+      "summary": "No-cost confidential business advising on finance, marketing, expansion, management and business planning.",
+      "url": "https://wisconsinsbdc.org/centers/milwaukee/",
+      "qualifier": "Consultation availability and individual services depend on program intake. Not a cash grant or LeeWay referral partnership.",
+      "status": "OFFICIAL_SERVICE_PUBLISHED",
+      "sourceChecked": "2026-11-05",
+      "tags": [
+        "Restaurant",
+        "Grocery/Convenience",
+        "Retail/Beauty Supply",
+        "Barber/Salon",
+        "Business District Organization"
+      ]
+    },
+    {
+      "id": "wwbic-finance-training",
+      "title": "WWBIC Milwaukee — lending and business education",
+      "audience": "Small businesses and startup/expansion entrepreneurs",
+      "summary": "Business education, one-on-one technical assistance and loans or capital access, subject to lending criteria.",
+      "url": "https://www.wwbic.com/office-locations/milwaukee/",
+      "qualifier": "Loans must be repaid; WWBIC assesses eligibility and terms. No approval, affiliation or business introductions are guaranteed.",
+      "status": "OFFICIAL_SERVICE_PUBLISHED",
+      "sourceChecked": "2026-11-05",
+      "tags": [
+        "Restaurant",
+        "Grocery/Convenience",
+        "Retail/Beauty Supply",
+        "Barber/Salon",
+        "Business District Organization"
+      ]
+    },
+    {
+      "id": "shop-employer-health",
+      "title": "SHOP small-employer health insurance information",
+      "audience": "Eligible small employers with staff, generally 1–50 FTE employees",
+      "summary": "HealthCare.gov explains small-employer SHOP health and dental insurance options, eligibility and enrollment through insurers or qualified brokers.",
+      "url": "https://www.healthcare.gov/small-businesses/choose-and-enroll/qualify-for-shop-marketplace/",
+      "qualifier": "Actual plans, participation rules, tax credits and availability require official eligibility checks and licensed professional advice; not insurance brokerage by LeeWay.",
+      "status": "OFFICIAL_SERVICE_PUBLISHED",
+      "sourceChecked": "2026-11-05",
+      "tags": [
+        "Restaurant",
+        "Grocery/Convenience",
+        "Retail/Beauty Supply",
+        "Barber/Salon",
+        "Business District Organization"
+      ]
     }
   ]
 }
