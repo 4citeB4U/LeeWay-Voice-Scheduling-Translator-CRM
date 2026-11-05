@@ -1,0 +1,34 @@
+# LEEWAY HEADER — DO NOT REMOVE
+# REGION: CRM / MILWAUKEE_OUTREACH_CI
+# TAG: LEEWAY-MKE-CRM-OUTREACH-CI-20261105
+# WHO: Creator (authority), assistant (implementation)
+# WHAT: Ensure additive appointment-first CRM campaign is safe and parsable
+# WHEN: 2026-11-05
+# WHERE: .github/workflows/milwaukee-outreach.yml
+# WHY: Retain existing CRM/ERP and block synthetic outreach or false claims
+# HOW: Node built-in tests, syntax, external writes absent
+# AUTHORITY: Code quality only; not independent Veritas
+# LICENSE: Apache-2.0
+name: Milwaukee CRM Campaign Checks
+on:
+  push:
+    branches:
+      - feat/milwaukee-appointment-first-campaign-20261105
+  pull_request:
+    paths:
+      - "index.html"
+      - "modules/milwaukee-outreach.js"
+      - "data/milwaukee-appointment-first-20261105.json"
+      - "tests/milwaukee-outreach.test.mjs"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-and-scope:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: node --test tests/milwaukee-outreach.test.mjs
